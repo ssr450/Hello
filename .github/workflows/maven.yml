@@ -31,4 +31,6 @@ jobs:
       - name: Run Maven Dependency Submission
         uses: advanced-security/maven-dependency-submission-action@v3
         with:
-          github_token: ${{ secrets.PAT }}  # Pass the token to the action
+          github_token: ${{ secrets.GITHUB_TOKEN }}  # Pass the token to the action
+
+
