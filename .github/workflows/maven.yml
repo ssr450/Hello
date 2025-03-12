@@ -28,5 +28,20 @@ jobs:
       run: mvn -B package --file pom.xml
 
     # ✅ Fixed Dependency Submission Step
+    jobs:
+  example-job:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+      pull-requests: write
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Run maven dependency submission
+        uses: advanced-security/maven-dependency-submission-action@v3
+        with:
+          # Provide required inputs for the action
+
     - name: Update dependency graph
       uses: advanced-security/maven-dependency-submission-action@v3
