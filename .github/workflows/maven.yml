@@ -1,0 +1,40 @@
+name: Dependency Graph Snapshot
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: macos-latest  # Use macOS runner
+
+    steps:
+      # Checkout the code from the repository
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      # Set up Java (adjust version if needed)
+      - name: Set up Java
+        uses: actions/setup-java@v2
+        with:
+          java-version: '17'
+
+      # Install dependencies (if needed, e.g., Maven)
+      - name: Set up Maven
+        uses: actions/setup-java@v2
+        with:
+          java-version: '17'
+          maven-version: '3.8.1'  # Specify version of Maven if needed
+
+      # Run the Maven Dependency Snapshot action
+      - name: Submit Maven Dependency Snapshot
+        uses: advanced-security/maven-dependency-submission-action@v3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}  # Use GitHub's default token
+          directory: './'  # Optional: specify the directory if needed
+
+     
